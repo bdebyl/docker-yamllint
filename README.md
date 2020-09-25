@@ -18,7 +18,7 @@ Commands that are typically used running this container
 docker run --rm -it -v $PWD/src bdebyl/yamllint 'ansible-lint *.yml'
 ```
 
-## Drone CI (or similar)
+### Drone CI (or similar)
 
 ```
 ---
