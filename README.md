@@ -6,11 +6,16 @@ Simple alpine-based Docker image for use with CI to lint yaml and ansible
 files.
 
 ## Usage
+Commands that are typically used running this container
+
+- `ansible-lint`
+- `make`
+- `yamllint`
 
 ### Docker Run
 
 ```
-docker run --rm -it -v $PWD/src bdebyl/yamllint *.yml
+docker run --rm -it -v $PWD/src bdebyl/yamllint 'ansible-lint *.yml'
 ```
 
 ## Drone CI (or similar)
@@ -27,8 +32,8 @@ steps:
   - name: lint
     image: bdebyl/yamllint
     command:
-      - export YML_FILES="$(find yamldir/ -name '*.yml' -not -name '*somefilename*')"
-      - ansible-lint "$YML_FILES"
-      - yamllint "$YML_FILES"
+      - ansible-lint *.yml
+      # or use a make targeT:
+      - make lint-ci
 ```
 
