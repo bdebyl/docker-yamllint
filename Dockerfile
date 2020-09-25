@@ -5,6 +5,7 @@ RUN apk add -U \
     gcc \
     git \
     libffi-dev \
+    make \
     musl-dev \
     openssl-dev \
     py3-pip \
