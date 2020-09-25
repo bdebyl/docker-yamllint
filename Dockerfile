@@ -20,4 +20,4 @@ RUN pip --no-cache-dir install -r /tmp/requirements.txt && \
 VOLUME ["/src"]
 WORKDIR /src
 
-ENTRYPOINT ["/bin/sh"]
+ENTRYPOINT ["/bin/sh", "-c"]
