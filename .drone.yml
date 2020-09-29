@@ -37,6 +37,6 @@ steps:
         from_secret: docker_password
       repo: bdebyl/yamllint
       auto_tag: true
-		when:
-			branch:
-				- master
+    when:
+      branch:
+        - master
