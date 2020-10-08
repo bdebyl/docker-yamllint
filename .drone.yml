@@ -32,12 +32,11 @@ steps:
       password:
         from_secret: docker_password
       repo: bdebyl/yamllint
-      auto_tag: true
     when:
       branch:
         - master
 ---
 kind: signature
-hmac: 7b0987392d1aae7217806f429d34f934f4755ba74b239e6c06c8eba800450532
+hmac: 4cfd358a462cbfae4c484efa6a6948ea9e3f8a20d24ec0824e74476a5c400a4c
 
 ...
