@@ -17,7 +17,7 @@ ADD requirements.txt /tmp/requirements.txt
 RUN pip --no-cache-dir install -r /tmp/requirements.txt && \
     rm /tmp/requirements.txt
 
-VOLUME ["/src"]
 WORKDIR /src
+VOLUME ["/src"]
 
 ENTRYPOINT ["/bin/sh", "-c"]
