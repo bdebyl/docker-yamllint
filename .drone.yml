@@ -2,27 +2,16 @@
 kind: pipeline
 name: default
 
-steps:
-  - name: gate-master
-    image: bdebyl/alpine-git
-    commands:
-      - git fetch origin +refs/heads/master
-      - git show-ref
-      - git diff --name-only HEAD~1..HEAD | grep Dockerfile || exit 78
-    when:
-      branch:
-        - master
+clone:
+  disable: true
 
-  - name: gate-pr
-    image: bdebyl/alpine-git
+steps:
+  - name: clone
+    image: docker.io/bdebyl/alpine-git
     commands:
-      - git fetch origin +refs/heads/master
-      - git show-ref
-      - git diff --name-only $(git merge-base refs/remotes/origin/master HEAD)..HEAD | grep Dockerfile || exit 78
-    when:
-      branch:
-        exclude:
-          - master
+      - git clone $DRONE_GIT_HTTP_URL .
+      - git checkout $DRONE_COMMIT
+      - echo -n "1.0.$DRONE_BUILD_NUMBER" > .tags
 
   - name: publish
     image: plugins/docker
@@ -37,6 +26,6 @@ steps:
         - master
 ---
 kind: signature
-hmac: 4cfd358a462cbfae4c484efa6a6948ea9e3f8a20d24ec0824e74476a5c400a4c
+hmac: 33fcc721536110643d343929a2772913dbf0a488c169341f05e5bd55534c3d62
 
 ...

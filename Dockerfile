@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.18.2
 MAINTAINER Bastian de Byl <bastian@bdebyl.net>
 
 RUN apk add -U \
@@ -20,4 +20,4 @@ RUN pip --no-cache-dir install -r /tmp/requirements.txt && \
 WORKDIR /src
 VOLUME ["/src"]
 
-ENTRYPOINT ["/bin/sh", "-c"]
+ENTRYPOINT ["yamllint"]
