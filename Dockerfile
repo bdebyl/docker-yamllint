@@ -20,4 +20,4 @@ RUN pip --no-cache-dir install -r /tmp/requirements.txt && \
 WORKDIR /src
 VOLUME ["/src"]
 
-ENTRYPOINT ["yamllint"]
+ENTRYPOINT ["/bin/sh", "-c"]
